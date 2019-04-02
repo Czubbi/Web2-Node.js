@@ -10,8 +10,8 @@ class CustomerController
     }
     getCustomers(callback){
         conn.find({}).toArray((err,docs)=>{
-            if(err) callback(error,null);
-            else callback(null,docs);
+            if(err) callback(error);
+            else callback(docs);
         })
     }
     getCustomerByName(name,callback){

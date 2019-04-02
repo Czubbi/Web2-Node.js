@@ -2,6 +2,10 @@ const express=require('express');
 const app=express();
 var customerCtr = require('./customer/controllers/customerController.js');
 var myCustomerCtr = new customerCtr();
+var developerCtr = require('./developers/controllers/developerController.js')
+var myDeveloperCtr = new developerCtr();
+var projectCtr = require('./project/controllers/projectController.js')
+var myProjectCtr = new projectCtr();
 
 app.get('/api/insertCustomer',(req,res)=>{
     myCustomerCtr.insertCustomer({name:"Fucker", salary:"a lot", sex:"yes"},(err,result)=>{
@@ -30,6 +34,48 @@ app.get('/api/modifyTest',(req,res)=>{
         else {
             res.json(docs);
         }
+    })
+})
+
+app.get('/api/getDevelopers', (req, res)=>{
+    myDeveloperCtr.getDevelopers((err, docs)=>{
+        if(err) res.json(err);
+        else res.json(docs);
+    })
+})
+
+app.get('/api/insertDeveloper', (req, res)=>{
+    myDeveloperCtr.insertDeveloper({name:"Developer 1", salary:"50000 DKK", sex:"sure"}, (err, result)=>{
+        if(err) res.json(err);
+        else res.json(result);
+    })
+})
+
+app.get('/api/getDeveloper/:name', (req, res)=>{
+    myDeveloperCtr.getDeveloperByName(req.params.name, (err, docs)=>{
+        if(err) res.json(err);
+        else res.json(docs);
+    })
+})
+
+app.get('/api/getProjects', (req, res)=>{
+    myProjectCtr.getProjects((err, docs)=>{
+        if(err) res.json(err);
+        else res.json(docs)
+    })
+})
+
+app.get('/api/getProject/:name', (req, res)=>{
+    myProjectCtr.getProjectByName(req.params.name, (err, docs)=>{
+        if(err) res.json(err);
+        else res.json(docs);
+    })
+})
+
+app.get('/api/insertProject', (req, res)=>{
+    myProjectCtr.insertProject({name: "Test", importance: "medium", time: "3 days"}, (err,result)=>{
+        if(err) res.json(err);
+        else res.json(result);
     })
 })
 
