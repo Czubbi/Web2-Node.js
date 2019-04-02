@@ -1,28 +1,49 @@
 const express=require('express');
 const app=express();
-const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://admin:admin@centisoftmongocluster-oqjuq.gcp.mongodb.net/test?retryWrites=true";
-const client = new MongoClient(uri, { useNewUrlParser: true });
+var customerCtr = require('./customer/controllers/customerController.js');
+var myCustomerCtr = new customerCtr();
 
-var connect = ()=>{
-    return new Promise((resolve,reject)=>{
-        client.connect(err => {
-            if(err) reject(err);
-            else resolve('Connected successfully...');
-        });
+app.get('/api/insertCustomer',(req,res)=>{
+    myCustomerCtr.insertCustomer({name:"Fucker", salary:"a lot", sex:"yes"},(err,result)=>{
+        if(err) res.json(err);
+        else res.json(result);
     })
-}
-
-app.get('/api/insertTest',(req,res)=>{
-    client.connect(err=>{})
+})
+app.get('/api/getCustomers',(req,res)=>{
+    myCustomerCtr.getCustomers((error,docs)=>{
+        if(error) res.json(error);
+        else res.json(docs);
+    })
 })
 
-app.get('/api',(req,res)=>{
-    client.connect(con)
+app.get('/api/getCustomer/:name',(req,res)=>{
+    console.log(req.params.name);
+    myCustomerCtr.getCustomerByName(req.params.name,(error,docs)=>{
+        if(error) res.json(error);
+        else res.json(docs);
+    })
+})
+
+app.get('/api/modifyTest',(req,res)=>{
+    client.db('CentiSoft').collection('Customer').updateOne({}).toArray((err, docs)=>{
+        if (err) res.json(err);
+        else {
+            res.json(docs);
+        }
+    })
+})
+
+app.get('/api/deleteTest',(req,res)=>{
+    //var o_id = new mongo.ObjectID(theidID);
+    //collection.update({'_id': o_id});
+    client.db('CentiSoft').collection('Customer').deleteOne({}).toArray((err, docs)=>{
+        if (err) res.json(err);
+        else {
+            res.json(docs);
+        }
+    })
 })
 
 app.listen(8000,()=>{
-    this.connect().then(x=>{
-        console.log(x);
-        console.log('Server is listening on port 8000');
-    }).catch(err=>{console.log(err)})});
+    console.log('Server started on localhost:8000');
+})
