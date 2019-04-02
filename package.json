@@ -1,0 +1,22 @@
+{
+  "name": "web2-node",
+  "version": "1.0.0",
+  "description": "Our amazing node application",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Czubbi/Web2-Node.js.git"
+  },
+  "author": "Czubbi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Czubbi/Web2-Node.js/issues"
+  },
+  "homepage": "https://github.com/Czubbi/Web2-Node.js#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
