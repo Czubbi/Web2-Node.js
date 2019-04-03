@@ -12,12 +12,22 @@ class Navbar extends Component {
   render() {
     return (
       <div className="myNav">
-        <ul>
-            <li>CentiSoft</li>
-            <li>Customers</li>
-            <li>Projects</li>
-            <li>Developers</li>
-        </ul>
+        <div className="myNavLogo">
+            <div>
+                {/*<span className="logo">CentiSoft</span>*/}
+                <img style={{width:"200px"}} src={process.env.PUBLIC_URL + '/images/logo.png'}/>
+            </div>
+            <div>
+                <hr></hr>
+            </div>
+        </div>
+        <div class="myNavEntries">
+            <ul>
+                <li className="menuEntry"><i className="fas fa-user"></i>&emsp;Customers</li>
+                <li className="menuEntry"><i className="fas fa-tasks"></i>&emsp;Projects</li>
+                <li className="menuEntry"><i className="fas fa-code-branch"></i>&emsp;Developers</li>
+            </ul>
+        </div>
       </div>
     );
   }
