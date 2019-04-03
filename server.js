@@ -4,8 +4,10 @@ var customerCtr = require('./customer/controllers/customerController.js');
 var myCustomerCtr = new customerCtr();
 var developerCtr = require('./developers/controllers/developerController.js')
 var myDeveloperCtr = new developerCtr();
-var projectCtr = require('./project/controllers/projectController.js')
+var projectCtr = require('./project/controllers/projectController.js');
 var myProjectCtr = new projectCtr();
+var taskController = require('./Task/controllers/taskController.js');
+var myTaskCtr = new taskController();
 
 app.get('/api/insertCustomer',(req,res)=>{
     myCustomerCtr.insertCustomer({name:"Fucker", salary:"a lot", sex:"yes"},(err,result)=>{
@@ -72,6 +74,25 @@ app.get('/api/getProject/:name', (req, res)=>{
     })
 })
 
+app.get('/api/getProject/:_id', (req, res)=>{
+    myProjectCtr.getProjectByName(req.params._id, (err, docs)=>{
+        if(err) res.json(err);
+        else res.json(docs);
+    })
+})
+
+app.get('/api/getTasks/:_id', (req, res)=>{
+    myTaskCtr.getTasks(req.params._id, (err, docs)=>{
+        if(err) res.json(err);
+        else res.json(docs);
+    })
+})
+app.get('/api/insertTask/:projectId',(req,res)=>{
+    myTaskCtr.addTaskToProject({name:"Task1",length:6},req.params.projectId,(err,result)=>{
+        if(err) res.json(err);
+        else res.json(result);
+    })
+})
 app.get('/api/insertProject', (req, res)=>{
     myProjectCtr.insertProject({name: "Test", importance: "medium", time: "3 days"}, (err,result)=>{
         if(err) res.json(err);

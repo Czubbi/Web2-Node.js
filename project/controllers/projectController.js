@@ -21,7 +21,12 @@ class ProjectController{
             else callback(docs);
         })
     }
-
+    getProjectById(id,callback){
+        conn.find({"_id":id}).toArray((err,docs)=>{
+            if(err) callback(err);
+            else callback(docs[0]);
+        })
+    }
     insertProject(project, callback){
         conn.insertOne(project, (err, result)=>{
             if(err) callback(err);
