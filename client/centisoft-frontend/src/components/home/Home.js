@@ -13,7 +13,7 @@ class Home extends Component {
     return (
       <div className="content">
         <div className="contentHeader">
-            <h1>Welcome to CentiSoft Management Software<sup><span style={{fontSize:"14px"}}>&reg;</span></sup></h1>
+            <h1>Welcome to CentiSoft<sup><span style={{fontSize:"14px"}}>&reg;</span></sup> Management Software</h1>
         </div>
       </div>
     );

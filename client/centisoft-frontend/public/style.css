@@ -3,10 +3,10 @@
 }
 .content{
     background-color: #DDDDDD;
-    width:85%;
+    width:calc(100% - 300px);
     min-height: 160vh;
     position: relative;
-    left:15%;
+    left:300px;
 }
 .contentHeader{
     display:flex;
@@ -30,7 +30,8 @@
     height: 150vh;
     z-index: 1;
     position: fixed;
-    width:15%;
+    width:300px;
+    min-width:300px;
     background-color: rgb(0, 37, 54);
     box-shadow: 1px 1px 10px black;
     display: flex;
@@ -49,16 +50,17 @@
     font-size: 16px;
     font-weight: bold;
     padding:10px 30px;
-    transition:.6s;
+    transition:.3s;
 }
 .menuEntry:hover{
     cursor:default;
     opacity:0.8;
-    background-color:rgb(13, 152, 221);
+    background-color:rgba(13, 152, 221,0.3);
 }
 .logo{
     font-size:30px;
-    color: rgb(13, 152, 221)
+    color: rgb(13, 152, 221);
+    font-weight: bold;
 }
 .myNavLogo{
     display: flex;
@@ -74,3 +76,8 @@
     position: relative;
     background-color: rgb(2, 45, 66);
 }
+@media only screen and (max-width: 800px) {
+    .contentHeader h1{
+        font-size:30px;
+    }
+  }

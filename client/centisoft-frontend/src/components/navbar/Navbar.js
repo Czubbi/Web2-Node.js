@@ -14,8 +14,8 @@ class Navbar extends Component {
       <div className="myNav">
         <div className="myNavLogo">
             <div>
-                {/*<span className="logo">CentiSoft</span>*/}
-                <img style={{width:"200px"}} src={process.env.PUBLIC_URL + '/images/logo.png'}/>
+                <span className="logo">Centi<span style={{color:"white"}}>Soft</span></span>
+                {/*<img style={{width:"100px"}} src={process.env.PUBLIC_URL + '/images/logo.png'}/>*/}
             </div>
             <div>
                 <hr></hr>

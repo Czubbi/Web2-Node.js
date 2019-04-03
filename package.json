@@ -4,7 +4,8 @@
   "description": "Our amazing node application",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+	"dev":"concurrently \"node server.js\" \"cd client && cd centisoft-frontend && npm start\""
   },
   "repository": {
     "type": "git",
