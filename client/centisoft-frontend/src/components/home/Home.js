@@ -16,23 +16,26 @@ class Home extends Component {
         <div className="cardWrap">
           <Card onClick={()=>{window.location.replace("https://facebook.com")}}>
             <div>
-              <h1>Customer</h1>
+              <i className="fas fa-user"></i>
+              <h1>Customers</h1>
               <h4>Manage customers with ease.</h4>
-              <h4><b><a href='https://facebook.com'>Add</a> <a href='https://facebook.com'>Delete</a> <a href='https://facebook.com'>Update</a></b></h4>
+              <h4>You can <b><span>view</span></b>, <b><span>create</span></b>, <b><span>delete</span></b> and <b><span>update</span></b> developers.</h4>
             </div>
           </Card>
           <Card>
             <div>
+              <i className="fas fa-tasks"></i>
               <h1>Projects</h1>
               <h4>Manage projects and their tasks.</h4>
-              <h4><b><a href='https://facebook.com'>Add</a> <a href='https://facebook.com'>Delete</a> <a href='https://facebook.com'>Update</a></b></h4>
+              <h4>You can <b><span>view</span></b>, <b><span>create</span></b>, <b><span>delete</span></b> and <b><span>update</span></b> developers.</h4>
             </div>
           </Card>
           <Card>
             <div>
+              <i className="fas fa-code-branch"></i>
               <h1>Developers</h1>
               <h4>Manage developers.</h4>
-              <h4><b><a href='https://facebook.com'>Add</a> <a href='https://facebook.com'>Delete</a> <a href='https://facebook.com'>Update</a></b></h4>
+              <h4>You can <b><span>view</span></b>, <b><span>create</span></b>, <b><span>delete</span></b> and <b><span>update</span></b> developers.</h4>
             </div>
           </Card>
         </div>

@@ -94,10 +94,19 @@
 .card > div{
   text-align:center;
 }
+.card > div > i{
+  font-size: 35px;
+}
+.card > div >h1{
+  margin-top:10px;
+}
 .cardWrap{
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   margin:30px;
+}
+.cardWrap span{
+  color:rgb(13, 152, 221);
 }
 @media only screen and (max-width: 800px) {
     .contentHeader h1{
