@@ -21,7 +21,7 @@ class Navbar extends Component {
                 <hr></hr>
             </div>
         </div>
-        <div class="myNavEntries">
+        <div className="myNavEntries">
             <ul>
                 <li className="menuEntry"><i className="fas fa-user"></i>&emsp;Customers</li>
                 <li className="menuEntry"><i className="fas fa-tasks"></i>&emsp;Projects</li>
