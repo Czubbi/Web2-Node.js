@@ -1,5 +1,8 @@
 const express=require('express');
 const app=express();
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 var customerCtr = require('./customer/controllers/customerController.js');
 var myCustomerCtr = new customerCtr();
 var developerCtr = require('./developers/controllers/developerController.js')
@@ -9,8 +12,9 @@ var myProjectCtr = new projectCtr();
 var taskController = require('./Task/controllers/taskController.js');
 var myTaskCtr = new taskController();
 
-app.get('/api/insertCustomer',(req,res)=>{
-    myCustomerCtr.insertCustomer({name:"Fucker", salary:"a lot", sex:"yes"},(err,result)=>{
+app.post('/api/insertCustomer',(req,res)=>{
+    console.log(req.body);
+    myCustomerCtr.insertCustomer({name: req.body.name, address:req.body.address, city:req.body.city , zip:req.body.zip , phone: req.body.phone, email: req.body.email},(err,result)=>{
         if(err) res.json(err);
         else res.json(result);
     })
@@ -100,16 +104,15 @@ app.get('/api/insertProject', (req, res)=>{
     })
 })
 
-app.get('/api/deleteTest',(req,res)=>{
+app.post('/api/deleteCustomer/:id',(req,res)=>{
     //var o_id = new mongo.ObjectID(theidID);
     //collection.update({'_id': o_id});
-    client.db('CentiSoft').collection('Customer').deleteOne({}).toArray((err, docs)=>{
-        if (err) res.json(err);
-        else {
-            res.json(docs);
-        }
+    myCustomerCtr.deleteCustomer(req.params.id, (err, result)=>{
+        if(err) res.json(err);
+        else res.json(result)
     })
 })
+
 
 app.listen(8000,()=>{
     console.log('Server started on localhost:8000');
