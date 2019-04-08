@@ -1,6 +1,6 @@
 var dbConnection = require('../../db/connection.js');
 var conn={};
-
+var ObjectId = require('mongodb').ObjectID;
 class CustomerController
 {
     constructor(){
@@ -22,6 +22,14 @@ class CustomerController
     }
     insertCustomer(customer,callback){
         conn.insertOne(customer,(err,result)=>{
+            if(err) callback(err,null);
+            else{
+                callback(null,result);
+            }
+        })
+    }
+    deleteCustomer(id,callback){
+        conn.deleteOne({"_id" : ObjectId(id)},(err,result)=>{
             if(err) callback(err,null);
             else{
                 callback(null,result);
