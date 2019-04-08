@@ -8,6 +8,15 @@ var projectCtr = require('./project/controllers/projectController.js');
 var myProjectCtr = new projectCtr();
 var taskController = require('./Task/controllers/taskController.js');
 var myTaskCtr = new taskController();
+const swaggerTools = require('swagger-tools');
+const yaml = require('yamljs');
+const swqggerDoc = yaml.load('openApi.yaml')
+
+swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
+          // Serve the Swagger documents and Swagger UI
+         app.use(middleware.swaggerUi());
+    });
+
 
 app.get('/api/insertCustomer',(req,res)=>{
     myCustomerCtr.insertCustomer({name:"Fucker", salary:"a lot", sex:"yes"},(err,result)=>{

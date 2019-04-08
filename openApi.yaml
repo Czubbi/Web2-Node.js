@@ -1,0 +1,48 @@
+# [START swagger]
+swagger: "2.0"
+info:description: "A api example"
+title: "Endpoints Example"
+version: "1.0.0"
+#host: "./"
+# [END swagger]
+basePath: "/api/"
+consumes:
+  -  "application/json"
+produces:
+  -  "application/json"
+schemes:
+  [http, https]
+paths:
+  "/authenticate":
+post:
+  description: "Authenticates user and returns token"
+  operationId: "authenticate"
+  produces:
+    -  "application/json"
+    responses:
+      200:
+        description: "Authenticate"
+        schema:
+          $ref: "#/definitions/authenticate-response"
+          parameters:
+            -  description: "Name of Developer"
+            in: body
+            name: Authenticate
+            required: true
+            schema:
+              $ref: "#/definitions/authenticate-request"
+              definitions:
+                authenticate-response:
+                  properties:
+                    success:
+                      type: "boolean"
+                      message:
+                        type: "string"
+                        token:
+                          type: "string"
+                          authenticate-request:
+                            properties:
+                              name:
+                                type: "string"
+                                password:
+                                  type: "string"
